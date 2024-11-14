@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "{{cookiecutter.example_package_name}}"
+version = "{{cookiecutter.example_package_version}}"
+description = "{{cookiecutter.example_package_description}}"
+authors = ["{{cookiecutter.github_org}} <{{cookiecutter.email}}>"]
+license = "{{cookiecutter.license}}"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+
+[tool.poetry.scripts]
+# Each entry here will create an executable which can be referenced in launchfiles
+{{cookiecutter.example_node_name}} = "{{cookiecutter.example_package_name}}.nodes.{{cookiecutter.example_package_name}}_node:main"
+
+[tool.colcon-poetry-ros.data-files]
+"share/ament_index/resource_index/packages" = ["resource/{{cookiecutter.example_package_name}}"]
+"share/camera_drivers" = ["package.xml"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
