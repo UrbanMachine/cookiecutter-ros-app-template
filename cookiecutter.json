@@ -1,0 +1,12 @@
+{
+  "email": "example@urbanmachine.build",
+  "github_org": "urbanmachine",
+  "project_name": "cool_ros_project",
+  "project_description": "This is a cool ROS project, showing off best practices for ROS applications.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "example_package_name": "cool_package",
+  "example_package_description": "This is the first package of this project, and shows how to integrate packages!",
+  "example_node_name": "CoolNode",
+  "example_package_version": "0.1.0"
+}
