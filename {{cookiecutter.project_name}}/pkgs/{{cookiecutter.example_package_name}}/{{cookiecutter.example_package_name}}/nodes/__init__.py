@@ -1,0 +1,1 @@
+from .{{cookiecutter.example_package_name}}_node import {{cookiecutter.example_node_name}}
