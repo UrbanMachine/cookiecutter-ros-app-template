@@ -87,9 +87,9 @@ This process requires being an Admin on the github org.
 1. Sign in to [Codecov](https://about.codecov.io/sign-up/) with your Github account.
 2. Under your repository in Codecov, select "Activate".
 3. Get a codecov API token. Settings can be found under:
-   https://app.codecov.io/gh/UrbanMachine/PROJECT_NAME/
+   https://app.codecov.io/gh/GITHUB_ORG/PROJECT_NAME/
 4. Add a secret named `CODECOV_TOKEN` to your Github repositories secrets. Settings can be found under: 
-   https://github.com/UrbanMachine/PROJECT_NAME/settings/secrets/actions
+   https://github.com/GITHUB_ORG/PROJECT_NAME/settings/secrets/actions
 6. You should now be able to see code coverage under codecov!
 
 ### Fixing the `lint` Github Action
@@ -102,7 +102,7 @@ Set up SSH keys as follows:
    ssh-keygen
    ```
 2. Add the private key (`id_rsa`) to your Github repository's sectrets under the name `SSH_KEY`. Settings can be found under: 
-   https://github.com/UrbanMachine/PROJECT_NAME/settings/secrets/actions
+   https://github.com/GITHUB_ORG/PROJECT_NAME/settings/secrets/actions
 
 3. Add a public key (`id_rsa.pub`) to your repository's deploy keys on github. Settings can be found under: 
-   https://github.com/UrbanMachine/PROJECT_NAME/settings/keys
+   https://github.com/GITHUB_ORG/PROJECT_NAME/settings/keys
