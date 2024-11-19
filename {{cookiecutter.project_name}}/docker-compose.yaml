@@ -1,0 +1,80 @@
+# Set  the docker compose project name, which will apply to all services
+name: {{cookiecutter.project_name}}
+
+# Create a variable for holding common configuration for all containers
+# This syntax inspired by https://docs.geoserver.org/2.21.x/en/user/styling/ysld/reference/variables.html
+x-common-config: &common-config
+  restart: "unless-stopped"
+  labels:
+    # Tells Promtail to get logs for this container
+    - "build.{{cookiecutter.dockerhub_org}}.collect-logs=true"
+
+services:
+  ros-nodes:
+    command: ros2 launch "launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}/launcher.py"
+    image: {{cookiecutter.dockerhub_org}}/{{cookiecutter.project_name}}:latest
+    build:
+      context: .
+    volumes:
+      # Mounts the 'launch-profiles/LAUNCH_PROFILE' directory into '/robot/launch-profile/'
+      # This way you can save configuration files from GUI's like rviz right back to your source dir
+      - "./launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}:/robot/launch-profile/"
+      # Necessary for display passthrough
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+      # Build cache, used by `save-build-cache` and `restore-build-cache` docker scripts
+      - type: volume
+        source: ros-nodes-build-cache
+        target: /robot/build
+    environment:
+      # Necessary for display passthrough
+      DISPLAY: $DISPLAY
+    # Gives the container access to kernel capabilities, useful for most robots
+    network_mode: host
+    cap_add:
+      - ALL
+    # Sometimes nodes never fully stop on SIGTERM
+    stop_signal: SIGKILL
+    <<:
+      - *common-config
+
+  grafana:
+    image: grafana/grafana-oss:11.3.0
+    user: "0"
+    volumes:
+      - ${VOLUMES_DIRECTORY:-./.docker_volumes}/grafana:/var/lib/grafana
+      - ./docker/grafana:/etc/grafana
+    ports:
+      - "${GRAFANA_PORT:-80}:3000"
+    <<: *common-config
+
+  promtail:
+    image: grafana/promtail:3.2.1
+    command: -config.file=/config.yaml
+    configs:
+      - source: promtail
+        target: /config.yaml
+    volumes:
+      # For reading container labels and logs
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    # Promtail takes a long time to stop if for some reason Loki isn't running. See:
+    # https://github.com/grafana/loki/issues/6533
+    stop_signal: SIGKILL
+    <<:
+      - *common-config
+
+  loki:
+    image: grafana/loki:3.2.1
+    user: "root"
+    ports:
+      - 3100:3100
+    volumes:
+      - ${VOLUMES_DIRECTORY:-./.docker_volumes}/loki:/loki
+    <<: *common-config
+
+volumes:
+  ros-nodes-build-cache:
+
+configs:
+  promtail:
+    file: docker/promtail/config.yaml
