@@ -55,7 +55,7 @@ function is_stack_running() {
 # Then, the stack will be brought down.
 function deploy_and_wait {
   # Start the stack non-blockingly, because logs are best accessed via the web interface
-  docker compose up --detach
+  LAUNCH_PROFILE="${1}" docker compose up --detach
 
   trap _catch_sigint INT
 
