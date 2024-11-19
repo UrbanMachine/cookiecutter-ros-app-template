@@ -9,5 +9,6 @@
   "example_package_name": "cool_package",
   "example_package_description": "This is the first package of this project, and shows how to integrate packages!",
   "example_node_name": "CoolNode",
+  "example_launch_profile": "{{ cookiecutter.example_node_name | lower  + '_launch_profile' }}",
   "example_package_version": "0.1.0"
 }
