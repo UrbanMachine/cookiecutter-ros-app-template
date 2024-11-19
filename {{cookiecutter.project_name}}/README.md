@@ -33,12 +33,3 @@ Then, open http://localhost/ on your browser to view the project logs.
 
 ---
 This repository was initialized by the [create-ros-app](https://github.com/UrbanMachine/create-ros-app) template. Contributions are welcome!
-
-# TODO: Add 'how to run' instructions
-# TODO: Explain steps for adding a new package
-# TODO: Find out if node helpers doesn't work still w/o cyclone and put an issue in the Dockerfile
-
-# TODO: In the main readme document running the project and viewing logs
-#       Depencencies: docker
-#       To run: `docker/launch cool-project` then open `localhost` on your browser
-#       The username & password for editing the logs dashboard is `admin` 
