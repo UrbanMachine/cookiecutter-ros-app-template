@@ -16,6 +16,7 @@ This documentation walks through the features of the template, and how to use th
   poetry run lint --help
   ```
 - Easily build ROS apps in an out-of-the box containerized environment, with helper scripts under the `docker/` directory.
+  
   **Relevant Scripts:**
   ```shell
   # Run a profile specified under `launch-profiles/`
@@ -80,3 +81,16 @@ Run `poetry install` then enter the shell via `poetry shell` to get access to th
 This project is based on a template, upstream changes can be found on the [template repository](https://github.com/UrbanMachine/create-ros-app).
 A tool called `cruft` will alert you when there are upstream changes, and help you merge those in.
 
+### `docker`
+
+This directory contains scripts for building and running the Docker container. Look at the [Fancy Features](#fancy-features) section for more information on how to use these scripts.
+
+As for the structure:
+
+```shell
+docker/
+├── grafana/   # Stores Grafana provisioning configuration
+├── promtail/  # Stores Promtail provisioning configuration
+├── utils/     # Contains utility scripts for building or running inside the Docker container
+│   ├── environment  # Scripts for use during Dockerfile build
+│   ├── runtime      # Helper for use when using the docker container
