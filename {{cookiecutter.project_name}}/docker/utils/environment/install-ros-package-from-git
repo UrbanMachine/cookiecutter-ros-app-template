@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Clones a git ros2 repo, checks out a specific branch, then builds and installs it.
+#
+# Usage: install-ros-package-from-git {repo_url} {commit_hash}
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Get a directory name based on the URL of the git repo
+REPO_PATH=$(pwd)/$(basename "$1" .git)
+
+# Clone and check out the requisite stuff
+git clone "$1"
+cd "${REPO_PATH}"
+git checkout "$2"
+
+# Install dependencies, build the package, and add it to the ros2 workspaces
+with-package-list rosdep install -i --rosdistro "${ROS2_DISTRO}" -y --from-path .
+enter-workspaces colcon build
+add-workspace "${REPO_PATH}/install/setup.bash"
