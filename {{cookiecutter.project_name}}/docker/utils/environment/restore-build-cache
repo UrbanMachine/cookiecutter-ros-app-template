@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Copies the build cache from `/cache` into a place where the build system can
+# use it. Copying like this ensures that the build cache is present in the
+# final image, which is necessary for packages containing messages.
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+if [[ ! -d "/cache/build" ]]; then
+  echo "Build cache directory not mounted" >&2
+  exit 1
+fi
+
+rm -rf /robot/build
+cp -r /cache/build /robot/build

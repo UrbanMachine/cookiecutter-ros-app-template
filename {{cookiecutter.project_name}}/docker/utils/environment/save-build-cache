@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Copies the build cache from a build operation into `/cache`, where it will be
+# saved as a cache volume by Docker for the next build.
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Makes `*` include hidden files
+shopt -s dotglob
+
+if [[ ! -d "/cache/build" ]]; then
+  echo "Build cache directory not mounted" >&2
+  exit 1
+fi
+
+rm -rf /cache/build/*
+cp -r /robot/build/. /cache/build/.
