@@ -4,7 +4,6 @@ version = "{{cookiecutter.example_package_version}}"
 description = "{{cookiecutter.example_package_description}}"
 authors = ["{{cookiecutter.github_org}} <{{cookiecutter.email}}>"]
 license = "{{cookiecutter.license}}"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10"
