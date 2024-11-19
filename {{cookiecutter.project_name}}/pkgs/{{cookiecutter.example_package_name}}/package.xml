@@ -1,16 +1,22 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>{{cookiecutter.example_package_name}}</name>
-  <version>{{cookiecutter.example_package_version}}</version>
-  <description>{{cookiecutter.example_package_description}}</description>
-  <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_org}}</maintainer>
-  <license>{{cookiecutter.license}}</license>
+    <name>{{cookiecutter.example_package_name}}</name>
+    <version>{{cookiecutter.example_package_version}}</version>
+    <description>{{cookiecutter.example_package_description}}</description>
+    <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_org}}</maintainer>
+    <license>{{cookiecutter.license}}</license>
 
-  <test_depend>python3-pytest</test_depend>
-  <test_depend>python3-pytest-cov</test_depend>
+    <test_depend>python3-pytest</test_depend>
+    <test_depend>python3-pytest-cov</test_depend>
 
-  <export>
-    <build_type>ament_python</build_type>
-  </export>
+
+    <!-- For visualizing and testing -->
+    <depend>robot_state_publisher</depend>
+    <depend>rviz2</depend>
+    <depend>joint_state_publisher</depend>
+
+    <export>
+        <build_type>ament_python</build_type>
+    </export>
 </package>
