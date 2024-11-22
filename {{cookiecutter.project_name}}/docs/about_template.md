@@ -1,7 +1,7 @@
 # Using `create-ros-app`
 
 This repository was initialized by the [create-ros-app](https://github.com/UrbanMachine/create-ros-app) template.
-This template is a everything-but-the-robot-code starter for ROS projects. It includes a Dockerfile for building ROS packages, a GitHub Actions workflow for linting and autoformatting, and a few other goodies.
+This template is a everything-but-the-robot-code starter for ROS projects. It includes a Dockerfile for building ROS packages, a GitHub Actions workflow for linting and autoformatting, and many other goodies.
 
 This documentation walks through the features of the template, and how to use them.
 
