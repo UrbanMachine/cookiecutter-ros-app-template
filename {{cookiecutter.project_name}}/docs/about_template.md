@@ -22,10 +22,10 @@ This documentation walks through the features of the template, and how to use th
   # Run a profile specified under `launch-profiles/`
   docker/launch <profile>
   
-  # Run and enter a ROS container without executing anything
+  # Run and enter a new ROS container without executing anything
   docker/run
   
-  # Enter an existing ROS container to poke around
+  # Enter a currently running ROS container to poke around
   docker/exec
   ```
 

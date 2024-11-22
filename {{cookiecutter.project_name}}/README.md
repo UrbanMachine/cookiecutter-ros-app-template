@@ -8,7 +8,7 @@
 [![codecov](https://codecov.io/gh/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/branch/main/graph/badge.svg)](https://codecov.io/gh/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}})
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
-![ROS](https://img.shields.io/badge/ros-%230A0FF9.svg?logo=ros&logoColor=white)
+![ROS2](https://img.shields.io/badge/ros-%230A0FF9.svg?logo=ros&logoColor=white)
 
 ---
 

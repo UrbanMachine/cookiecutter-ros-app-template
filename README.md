@@ -1,26 +1,26 @@
 # create-ros-app
 
-A template for creating robust ROS (Robot Operating System) applications, designed for large-scale, end-to-end robotics projects. This template is optimized for maintaining consistency and quality across multiple ROS packages and project components.
+A template for creating robust ROS2 (Robot Operating System) applications, designed for large-scale, end-to-end robotics projects. This template is optimized for maintaining consistency and quality across multiple ROS2 packages and project components.
 
 ## What? Why?
 
 When you build a robot, you have to juggle a **ton** of opinionated decisions before you so much as tell an actuator to move.
 
-This template helps streamline the development of ROS applications by setting up a standardized project structure, tooling, and configuration for ROS packages, ensuring that every project starts with consistent settings and follows best practices. It also includes a centralized linting and testing setup to ensure code quality across packages.
+This template helps streamline the development of ROS2 applications by setting up a standardized project structure, tooling, and configuration for ROS2 packages, ensuring that every project starts with consistent settings and follows best practices. It also includes a centralized linting and testing setup to ensure code quality across packages.
 
 ## Features
 
 The full documentation for the project features can be found in [about_template.md](%7B%7Bcookiecutter.project_name%7D%7D/docs/about_template.md)
 
-- **Containerized ROS Environment**: The project only needs `docker` to run. You only need to know a few simple commands to launch your project. 
-  - **Launch** specific ROS components or full stacks with `docker/launch`.
+- **Containerized ROS2 Environment**: The project only needs `docker` to run. You only need to know a few simple commands to launch your project. 
+  - **Launch** specific ROS2 components or full stacks with `docker/launch`.
   - **Run** components in isolation using `docker/run`.
   - **Execute** commands within running containers using `docker/exec`.
-  - **Test** all ROS packages with `docker/test`.
+  - **Test** all ROS2 packages with `docker/test`.
 - **Logging Made Easy**: Projects come pre-configured with `grafana`, `loki` and `promtail`, so you can search and browse logs easily under `http://localhost` after launching.
-- **Standardized ROS Project Structure**: Pre-organized packages under `pkgs.`
-- **Launch and Configuration Structure**: The `launch-profiles/` directory lets you create separate ROS "apps" where launchfiles, configuration, model files can live in one place separate from the package code.
-- **Dependencies are Organized**: ROS dependencies go in a `package.xml`, python dependencies go in the `pyproject.toml`, and the `Dockerfile` has a spot for apt dependencies.
+- **Standardized ROS2 Project Structure**: Pre-organized packages under `pkgs.`
+- **Launch and Configuration Structure**: The `launch-profiles/` directory lets you create separate ROS2 "apps" where launchfiles, configuration, model files can live in one place separate from the package code.
+- **Dependencies are Organized**: ROS2 dependencies go in a `package.xml`, python dependencies go in the `pyproject.toml`, and the `Dockerfile` has a spot for apt dependencies.
 - **Centralized Linting and Testing**: Enter `poetry shell` at the root of the project, and you can use the `lint` command which covers tooling for `python`, `C++`, and `JS` code.
 - **GitHub Actions CI/CD**: Pre-configured workflows for continuous integration, including linting, testing, and optional Codecov integration to monitor code coverage.
 - **Cruft Integration for Template Sync**: Ensures projects remain up-to-date with the latest template improvements, allowing the team to adopt new best practices with minimal effort.
