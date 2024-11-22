@@ -15,6 +15,7 @@ services:
     image: {{cookiecutter.dockerhub_username_or_org}}/{{cookiecutter.project_name}}:latest
     build:
       context: .
+      dockerfile: docker/Dockerfile
     volumes:
       # Mounts the 'launch-profiles/LAUNCH_PROFILE' directory into '/robot/launch-profile/'
       # This way you can save configuration files from GUI's like rviz right back to your source dir

@@ -82,8 +82,8 @@ docker/
 ├── grafana/   # Stores Grafana provisioning configuration
 ├── promtail/  # Stores Promtail provisioning configuration
 ├── utils/     # Contains utility scripts for building or running inside the Docker container
-│   ├── environment  # Scripts for use during Dockerfile build
-│   ├── runtime      # Helper for use when using the docker container
+│   ├── environment/  # Scripts for use during Dockerfile build
+│   ├── runtime/      # Helper for use when using the docker container
 ```
 
 #### `docker/Dockerfile`

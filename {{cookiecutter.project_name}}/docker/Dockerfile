@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="ubuntu:24.04"
+ARG BASE_IMAGE="this variable is set under `docker/_shared`"
 FROM ${BASE_IMAGE}
 
 # Set configurable environment variables
@@ -22,7 +22,9 @@ ENV APT_CACHE=/var/cache/apt
 ENV PIP_CACHE=/root/.cache/pip
 ENV BUILD_CACHE=/cache/build
 
-# Copy in useful scripts for use during the build
+# TODO: was opengl necessary?
+
+# Copy in useful scripts for use during the build, such as `add-apt-repo` and `install-packages`
 COPY docker/utils/environment/* /usr/local/bin/
 
 # Add the ROS2 repo
@@ -33,6 +35,7 @@ RUN --mount=type=cache,target="${APT_CACHE}" \
 
 ######################################################################
 ########## NOTE TO TEMPLATE USERS: This is a good place to add any additional apt packages you need
+# Install ROS2 and other necessary packages
 RUN --mount=type=cache,target="${APT_CACHE}" \
     install-packages \
     # ROS2
@@ -62,7 +65,7 @@ RUN poetry self add poetry-plugin-bundle
 # Add the ROS core setup script to the 'workspaces' command
 RUN add-workspace /opt/ros/${ROS2_DISTRO}/setup.bash
 
-# Set up colcon so it can install mixins
+# Set up colcon so it can install mixins. This is required for `colcon-poetry-ros`
 RUN colcon mixin add default \
         https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml && \
     colcon mixin update && \
@@ -70,7 +73,7 @@ RUN colcon mixin add default \
         https://raw.githubusercontent.com/colcon/colcon-metadata-repository/master/index.yaml && \
     colcon metadata update
 
-# Initialize Rosdep
+# Initialize Rosdep for automatically downloading dependencies from `package.xml` in pkgs
 WORKDIR /robot
 RUN rosdep init
 RUN rosdep update --rosdistro ${ROS2_DISTRO}
@@ -99,7 +102,7 @@ RUN --mount=type=cache,target="${PIP_CACHE}" \
     python3 -m colcon_poetry_ros.dependencies.install --base-paths pkgs
 
 ## Add ROS2 libraries to Python's path ahead of enter-workspaces to help developer tools
-## like PyCharm understand where packages are. It also breaks dependency isolation a bit,
+## like PyCharm or VS Code understand where packages are. It also breaks dependency isolation a bit,
 ## but it's a necessary evil for now.
 RUN echo "/opt/ros/${ROS2_DISTRO}/lib/${PYTHON_VERSION}/site-packages" >> /usr/local/lib/${PYTHON_VERSION}/dist-packages/ros2.pth
 RUN echo "/opt/ros/${ROS2_DISTRO}/local/lib/${PYTHON_VERSION}/dist-packages" >> /usr/local/lib/${PYTHON_VERSION}/dist-packages/ros2.pth
@@ -109,12 +112,12 @@ RUN make-pth-file-from-workspace "$(pwd)/install" /usr/local/lib/${PYTHON_VERSIO
 COPY docker/utils/runtime/* /usr/local/bin/
 
 # Move the build cache from a Docker cache mount to a place where our build
-# system can see it
+# system can see it. This helps make `colcon build` faster between runs.
 RUN --mount=type=cache,target="${BUILD_CACHE}" restore-build-cache
 
-# Build all packages
-COPY launch-profiles /robot/launch-profiles
-COPY pkgs /robot/pkgs
+# Build all packages, copying project files under a root `/robot/` directory in the container
+COPY ../launch-profiles /robot/launch-profiles
+COPY ../pkgs /robot/pkgs
 RUN enter-workspaces colcon build --symlink-install
 RUN add-workspace /robot/install/setup.bash
 
