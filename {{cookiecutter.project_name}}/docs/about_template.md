@@ -7,10 +7,11 @@ This documentation walks through the features of the template, and how to use th
 
 **Make sure to follow the [Post-Set-Up Guide](https://github.com/UrbanMachine/create-ros-app/blob/main/README.md#post-set-up-guide) after setting up the template before diving into the features below!**
 
-## Quick Guide
+## Quick Start Guide
 
-Here's a quick guide to all the features of the template:
+Here's a quick guide on the features of this template
 
+### Scripts
 - Linting and autoformatting for python (ruff), C++ (clangformat), bash (shellcheck), and javascript (eslint)
   
   **Relevant Scripts:**
@@ -34,6 +35,21 @@ Here's a quick guide to all the features of the template:
   
   More usage examples for the above scripts are documented at the top of the script files.
 
+### Things You Likely Want To Do
+
+- **Add new dependencies:**
+  - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after. 
+  - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
+  - **System dependencies:** can be added under `docker/Dockerfile`, under the `install-packages` section.
+  
+  After any changes, the container will automatically re-build on the next launch.
+- **Save persistent data:** The `/robot/persistent` directory is mounted to `.docker_volumes/ros-nodes/` on your local machine. Save data there to persist across container runs, and to view it in your file manager.
+- **Look at logs:** Logs are available at `http://localhost/` after running `docker/launch <profile>`.
+- **Create a new Launch Profile:**
+  - Add a directory under `docker/launch-profiles/`
+  - Add a `launching.py` file that launches your ROS nodes inside your new profile directory
+  - Fill out the `launching.py` file with the nodes you want to launch.
+  
 ## Project Structure
 
 ### `pkgs/`
