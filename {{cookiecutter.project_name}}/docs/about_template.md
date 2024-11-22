@@ -71,7 +71,7 @@ Run `poetry install` then enter the shell via `poetry shell` to get access to th
 This project is based on a template, upstream changes can be found on the [template repository](https://github.com/UrbanMachine/create-ros-app).
 A tool called `cruft` will alert you when there are upstream changes, and help you merge those in.
 
-### `docker`
+### `docker/`
 
 This directory contains scripts for building and running the Docker container. Look at the [Fancy Features](#fancy-features) section for more information on how to use these scripts.
 
@@ -99,3 +99,9 @@ The Dockerfile will need to be edited in two places for each new ROS package you
 
 There's also a location for adding new `apt` dependencies. It's recommended that ROS package
 dependencies are added through `package.xml` if they are available.
+
+### `.env`
+
+This file holds environment variables that are used by the docker build and launch scripts.
+
+Most variables can safely be edited.
