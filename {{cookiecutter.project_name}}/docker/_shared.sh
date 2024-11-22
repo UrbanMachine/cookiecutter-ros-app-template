@@ -6,6 +6,7 @@ BASE_IMAGE="ubuntu:24.04"
 
 # Builds our Docker images
 function build_images {
+  echo "Building project images. This may take a few minutes on the first run..." >&2
   docker compose build --build-arg BASE_IMAGE="${BASE_IMAGE}"
 }
 
@@ -24,6 +25,8 @@ function undeploy {
 
 # Pulls necessary images for offline building and deployment
 function pull_images {
+  echo "Pulling necessary docker images. This may take a few minutes on the first run..." >&2
+
   # Pull all the non-locally-built images
   docker compose pull grafana loki promtail
 

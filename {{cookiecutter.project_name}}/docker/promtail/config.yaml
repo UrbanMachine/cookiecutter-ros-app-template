@@ -1,5 +1,5 @@
 # This configures Promtail to scrape logs from all containers with the label
-# "build.{{cookiecutter.dockerhub_org}}.collect-logs=true".
+# "build.{{cookiecutter.dockerhub_username_or_org}}.collect-logs=true".
 #
 # It then uses regex to extract the node name from the container name, the node
 # executable from the log, and the log level from the log. It then assigns the
@@ -29,7 +29,7 @@ scrape_configs:
         filters:
           - name: label
             # Make sure that all relevant containers have this label
-            values: [ "build.{{cookiecutter.dockerhub_org}}.collect-logs=true" ]
+            values: [ "build.{{cookiecutter.dockerhub_username_or_org}}.collect-logs=true" ]
     # Use the container name to create a loki label
     relabel_configs:
       - source_labels: [ '__meta_docker_container_name' ]
