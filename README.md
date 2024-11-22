@@ -65,7 +65,7 @@ start from **Step 3**.
 
    You may need to use:
    ```shell
-   git merge --allow-unrelated-histories
+   git merge --allow-unrelated-histories template main
    ```
 8. Delete the `template` branch
    
