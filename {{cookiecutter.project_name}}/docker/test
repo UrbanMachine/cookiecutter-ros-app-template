@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+# Runs tests in all packages under the `pkgs/ directory.
+# All other arguments are passed to `colcon test`. Some examples below:
+#
+# Usage:
+#   docker/test
+#
+# Examples:
+#   Run all tests on all `pkgs/`
+#   docker/test
+#
+#   Run tests on a specific package (passing flags to `colcon test`)
+#   docker/test --packages-select {{cookiecutter.example_package_name}}
+#
+#   Run tests on a specific package with a specific test
+#   docker/test --packages-select {{cookiecutter.example_package_name}} --pytest-arg {{cookiecutter.example_package_name}}_test/unit/nodes/test_{{cookiecutter.example_package_name}}_node.py
+
 set -o errexit
 set -o pipefail
 set -o nounset
@@ -22,4 +38,10 @@ docker run -it \
   `# saves us from having to rebuild ROS packages for test changes.` \
   -v "$(pwd)/pkgs:/robot/pkgs" \
   ${BUILT_IMAGE_NAME} \
-  colcon-test "${@}"
+  `# Run tests in 'pkgs' with sane logging defaults` \
+  colcon test \
+    --base-paths pkgs \
+    --event-handlers console_direct+ \
+    --executor sequential \
+    --return-code-on-test-failure \
+    "${@}"

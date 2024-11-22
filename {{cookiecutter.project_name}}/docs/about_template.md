@@ -31,6 +31,8 @@ Here's a quick guide to all the features of the template:
   # Enter a currently running ROS container to poke around
   docker/exec
   ```
+  
+  More usage examples for the above scripts are documented at the top of the script files.
 
 ## Project Structure
 
