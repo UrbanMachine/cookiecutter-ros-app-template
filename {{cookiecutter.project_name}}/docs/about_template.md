@@ -7,7 +7,9 @@ This documentation walks through the features of the template, and how to use th
 
 **Make sure to follow the [Post-Set-Up Guide](https://github.com/UrbanMachine/create-ros-app/blob/main/README.md#post-set-up-guide) after setting up the template before diving into the features below!**
 
-## Fancy Features
+## Quick Guide
+
+Here's a quick guide to all the features of the template:
 
 - Linting and autoformatting for python (ruff), C++ (clangformat), bash (shellcheck), and javascript (eslint)
   
@@ -15,6 +17,7 @@ This documentation walks through the features of the template, and how to use th
   ```shell
   poetry run lint --help
   ```
+  You may need to run `poetry lock` and `poetry install` before running the above command.
 - Easily build ROS apps in an out-of-the box containerized environment, with helper scripts under the `docker/` directory.
   
   **Relevant Scripts:**
