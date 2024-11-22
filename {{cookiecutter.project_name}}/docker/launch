@@ -29,7 +29,7 @@ function usage {
   echo "Available launch profiles are:" >&2
   ls -1 launch-profiles/ | sed 's/^/      - /' >&2
   echo "" >&2
-  echo "Read more about 'launch-profiles' under 'docs/'" >&2
+  echo "Read more about 'launch-profiles' under 'docs/about_template.md'" >&2
   exit 1
 }
 

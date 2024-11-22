@@ -108,3 +108,10 @@ dependencies are added through `package.xml` if they are available.
 This file holds environment variables that are used by the docker build and launch scripts.
 
 Most variables can safely be edited.
+
+### `.docker_volumes/`
+
+This directory is automatically created the first time you run `docker/launch`. It holds persistent state across runs for containers. 
+
+For example, if you enter your container via `docker/run` and save a file under `/robot/persistent/`, that file will be available the next time you run `docker/run`. It will also (by default) exist in your local machine under `.docker_volumes/ros-nodes/`.
+The `/robot/persistent` directory is intended for you, the developer, to use. So have at it!

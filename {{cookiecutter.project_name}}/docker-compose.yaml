@@ -17,6 +17,10 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     volumes:
+      # Mount a directory you can write to from the container for storing persistent data
+      # In your local machine this will be in '.docker_volumes/ros-nodes/'. In the robot
+      # it will be in '/robot/persistent/'
+      - ${VOLUMES_DIRECTORY:- 'set in .env'}/ros-nodes:/robot/persistent
       # Mounts the 'launch-profiles/LAUNCH_PROFILE' directory into '/robot/launch-profile/'
       # This way you can save configuration files from GUI's like rviz right back to your source dir
       - "./launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}:/robot/launch-profile/"
@@ -70,7 +74,7 @@ services:
     ports:
       - 3100:3100
     volumes:
-      - ${VOLUMES_DIRECTORY:- 'set in .env'}/grafana:/var/lib/grafana
+      - ${VOLUMES_DIRECTORY:- 'set in .env'}/loki:/loki
     <<: *common-config
 
 volumes:

@@ -17,8 +17,8 @@ set -o nounset
 source docker/_shared.sh
 
 function main {
-  enable_passthrough
-  docker compose exec ros-nodes -it "${container_name}" "$@"
+  enable_display_passthrough
+  docker compose exec --interactive ros-nodes "${@:-bash}"
 }
 
 main "${@}"
