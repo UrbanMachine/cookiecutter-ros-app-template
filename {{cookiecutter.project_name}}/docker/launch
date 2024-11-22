@@ -25,7 +25,11 @@ set -o pipefail
 set -o nounset
 
 function usage {
-  echo "Usage: docker/local-deploy [--no-pull] <launch-profile>" >&2
+  echo "Usage: docker/launch [--no-pull] <launch-profile>" >&2
+  echo "Available launch profiles are:" >&2
+  ls -1 launch-profiles/ | sed 's/^/      - /' >&2
+  echo "" >&2
+  echo "Read more about 'launch-profiles' under 'docs/'" >&2
   exit 1
 }
 

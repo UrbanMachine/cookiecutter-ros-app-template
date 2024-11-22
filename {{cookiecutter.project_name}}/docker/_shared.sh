@@ -3,6 +3,7 @@
 
 PROJECT_NAME="{{cookiecutter.project_name}}"
 BASE_IMAGE="ubuntu:24.04"
+BUILT_IMAGE_NAME="{{cookiecutter.dockerhub_username_or_org}}/{{cookiecutter.project_name}}:latest"
 
 # Builds our Docker images
 function build_images {
