@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # Shared functions used in multiple deployment scripts
 
-PROJECT_NAME="{{cookiecutter.project_name}}"
-BASE_IMAGE="ubuntu:24.04"
-BUILT_IMAGE_NAME="{{cookiecutter.dockerhub_username_or_org}}/{{cookiecutter.project_name}}:latest"
+source .env
 
 # Builds our Docker images
 function build_images {

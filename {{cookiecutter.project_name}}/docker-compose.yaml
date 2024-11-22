@@ -12,7 +12,7 @@ x-common-config: &common-config
 services:
   ros-nodes:
     command: ros2 launch "launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}/launcher.py"
-    image: {{cookiecutter.dockerhub_username_or_org}}/{{cookiecutter.project_name}}:latest
+    image: ${BUILT_IMAGE_NAME:- 'set-in-env'}
     build:
       context: .
       dockerfile: docker/Dockerfile
@@ -42,7 +42,7 @@ services:
     image: grafana/grafana-oss:11.3.0
     user: "0"
     volumes:
-      - ${VOLUMES_DIRECTORY:-./.docker_volumes}/grafana:/var/lib/grafana
+      - ${VOLUMES_DIRECTORY:- 'set in .env'}/grafana:/var/lib/grafana
       - ./docker/grafana:/etc/grafana
     ports:
       - "${GRAFANA_PORT:-80}:3000"
@@ -70,7 +70,7 @@ services:
     ports:
       - 3100:3100
     volumes:
-      - ${VOLUMES_DIRECTORY:-./.docker_volumes}/loki:/loki
+      - ${VOLUMES_DIRECTORY:- 'set in .env'}/grafana:/var/lib/grafana
     <<: *common-config
 
 volumes:

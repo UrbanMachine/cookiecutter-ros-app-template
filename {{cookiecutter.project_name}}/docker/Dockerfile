@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="this variable is set under `docker/_shared`"
+ARG BASE_IMAGE="this_variable_is_set_in_the_.env_file
 FROM ${BASE_IMAGE}
 
 # Set configurable environment variables

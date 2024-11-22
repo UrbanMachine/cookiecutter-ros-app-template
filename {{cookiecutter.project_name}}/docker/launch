@@ -71,6 +71,7 @@ function main {
   if [[ "${pull_upstream_images}" = true ]]; then
     pull_images
   fi
+
   build_images  # Build any images that need to be built
   undeploy  # Stop any existing stack
   enable_display_passthrough  # Enable passthrough for the stack
