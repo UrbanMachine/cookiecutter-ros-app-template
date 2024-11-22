@@ -8,9 +8,11 @@
   "license": "MIT",
   "example_package_name": "cool_package",
   "example_package_description": "This is the first package of this project, and shows how to integrate packages!",
-  "- ": "\nThe following variable should be written in PascalCase, because it will be used for a class name in python.\n",
   "example_node_name": "CoolNode",
-  "- ": "\nThis template comes pre-filled with something called a 'launch-profile'. \nIn this project, a launch profile is a launch.py & any configuration for running a specific ROS apps.\n",
   "example_launch_profile": "{{ cookiecutter.example_node_name | lower  + '_launch_profile' }}",
-  "example_package_version": "0.1.0"
+  "example_package_version": "0.1.0",
+  "__prompts__": {
+    "example_node_name": "The following variable should be written in PascalCase, because it will be used for a class name in python.\nexample_node_name ",
+    "example_launch_profile": "This template comes pre-filled with something called a 'launch-profile'. In this project, a launch profile is a launch.py & any configuration for running a specific ROS apps.)\nexample_launch_profile "
+  }
 }
