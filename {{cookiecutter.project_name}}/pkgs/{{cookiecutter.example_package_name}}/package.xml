@@ -4,7 +4,7 @@
     <name>{{cookiecutter.example_package_name}}</name>
     <version>{{cookiecutter.example_package_version}}</version>
     <description>{{cookiecutter.example_package_description}}</description>
-    <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_org}}</maintainer>
+    <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_username_or_org}}</maintainer>
     <license>{{cookiecutter.license}}</license>
 
     <test_depend>python3-pytest</test_depend>

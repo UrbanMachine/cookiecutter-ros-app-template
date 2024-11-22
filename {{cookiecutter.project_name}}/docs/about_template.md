@@ -63,16 +63,6 @@ package_name/
 
 Essentially, tests exist in a parallel directory to the package, and are split into `unit` and `integration` tests. The directories within `unit` and `integration` mirror the structure of the package itself, except that module names are prefixed with `test_`.
 
-### `Dockerfile`
-
-Feel free to edit as you like, but it's recommended to stick to editing within the sections
-blocked off by `#######`. 
-
-The Dockerfile will need to be edited in two places for each new ROS package you add:
-
-1. Copying in the `package.xml`
-2. Copying in the `pyproject.toml` and `poetry.lock`
-
 ### `.github/`
 
 This project uses poetry for linting, and has some code for running linting and autoformatting under `.github/lint`.
@@ -94,3 +84,18 @@ docker/
 ├── utils/     # Contains utility scripts for building or running inside the Docker container
 │   ├── environment  # Scripts for use during Dockerfile build
 │   ├── runtime      # Helper for use when using the docker container
+```
+
+#### `docker/Dockerfile`
+
+Feel free to edit as you like, but it's recommended to stick to editing within the sections
+blocked off by `#######`. 
+
+The Dockerfile will need to be edited in two places for each new ROS package you add:
+
+
+1. Copying in the `package.xml`
+2. Copying in the `pyproject.toml` and `poetry.lock`
+
+There's also a location for adding new `apt` dependencies. It's recommended that ROS package
+dependencies are added through `package.xml` if they are available.

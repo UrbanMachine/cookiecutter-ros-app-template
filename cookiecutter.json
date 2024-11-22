@@ -1,14 +1,16 @@
 {
   "email": "example@urbanmachine.build",
-  "github_org": "urbanmachine",
-  "dockerhub_org": "{{ cookiecutter.github_org }}",
+  "github_username_or_org": "urbanmachine",
+  "dockerhub_username_or_org": "{{ cookiecutter.github_username_or_org }}",
   "project_name": "cool_ros_project",
   "project_description": "This is a cool ROS project, showing off best practices for ROS applications.",
   "version": "0.1.0",
   "license": "MIT",
   "example_package_name": "cool_package",
   "example_package_description": "This is the first package of this project, and shows how to integrate packages!",
+  "- ": "\nThe following variable should be written in PascalCase, because it will be used for a class name in python.\n",
   "example_node_name": "CoolNode",
+  "- ": "\nThis template comes pre-filled with something called a 'launch-profile'. \nIn this project, a launch profile is a launch.py & any configuration for running a specific ROS apps.\n",
   "example_launch_profile": "{{ cookiecutter.example_node_name | lower  + '_launch_profile' }}",
   "example_package_version": "0.1.0"
 }

@@ -2,7 +2,7 @@
 name = "{{cookiecutter.example_package_name}}"
 version = "{{cookiecutter.example_package_version}}"
 description = "{{cookiecutter.example_package_description}}"
-authors = ["{{cookiecutter.github_org}} <{{cookiecutter.email}}>"]
+authors = ["{{cookiecutter.github_username_or_org}} <{{cookiecutter.email}}>"]
 license = "{{cookiecutter.license}}"
 
 [tool.poetry.dependencies]

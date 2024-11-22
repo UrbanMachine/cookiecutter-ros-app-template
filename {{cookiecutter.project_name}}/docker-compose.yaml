@@ -7,12 +7,12 @@ x-common-config: &common-config
   restart: "unless-stopped"
   labels:
     # Tells Promtail to get logs for this container
-    - "build.{{cookiecutter.dockerhub_org}}.collect-logs=true"
+    - "build.{{cookiecutter.dockerhub_username_or_org}}.collect-logs=true"
 
 services:
   ros-nodes:
     command: ros2 launch "launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}/launcher.py"
-    image: {{cookiecutter.dockerhub_org}}/{{cookiecutter.project_name}}:latest
+    image: {{cookiecutter.dockerhub_username_or_org}}/{{cookiecutter.project_name}}:latest
     build:
       context: .
     volumes:
