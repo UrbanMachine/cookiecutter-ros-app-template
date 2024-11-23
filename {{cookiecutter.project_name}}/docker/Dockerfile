@@ -108,9 +108,6 @@ RUN echo "/opt/ros/${ROS2_DISTRO}/lib/${PYTHON_VERSION}/site-packages" >> /usr/l
 RUN echo "/opt/ros/${ROS2_DISTRO}/local/lib/${PYTHON_VERSION}/dist-packages" >> /usr/local/lib/${PYTHON_VERSION}/dist-packages/ros2.pth
 RUN make-pth-file-from-workspace "$(pwd)/install" /usr/local/lib/${PYTHON_VERSION}/dist-packages/robot.pth
 
-# Copy in useful runtime scripts
-COPY docker/utils/runtime/* /usr/local/bin/
-
 # Move the build cache from a Docker cache mount to a place where our build
 # system can see it. This helps make `colcon build` faster between runs.
 RUN --mount=type=cache,target="${BUILD_CACHE}" restore-build-cache
