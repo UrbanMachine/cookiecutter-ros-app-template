@@ -21,8 +21,8 @@ ALL_LANGUAGES = "all"
 LINTERS = {
     PYTHON_LANGUAGE: [
         # Run linters from fastest to slowest
-        lint_ruff_check,
         lint_ruff_format,
+        lint_ruff_check,
         lint_darglint,
         lint_mypy,
     ],
