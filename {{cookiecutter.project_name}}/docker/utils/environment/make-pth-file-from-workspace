@@ -8,7 +8,7 @@
 #     make-pth-file-from-workspace {workspace install dir} {.pth file destination}
 #
 # Example:
-#     make-pth-file-from-workspace /robot/install /usr/local/lib/python3.8/dist-packages/robot.pth
+#     make-pth-file-from-workspace /robot/install /usr/local/lib/pythonX.XX/dist-packages/robot.pth
 
 set -o errexit
 set -o pipefail
