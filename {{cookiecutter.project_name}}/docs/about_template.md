@@ -56,15 +56,15 @@ Here's a quick guide on the features of this template
 
 The packages directory contains all the packages that are used in the project. Each package is added in the `Dockerfile`, and any new packages should be added there as well.
 
-#### Package structure
-Each package is made up of:
+#### Python Package structure
+Each python package is made up of:
 - A `resource` directory, which is a colcon requirement
 - A `package.xml` file, which is a colcon requirement
 - A `pyproject.toml`, because this project uses [colcon-poetry-ros](https://github.com/UrbanMachine/colcon-poetry-ros) to install project dependencies. Most ROS python packages use `setup.py`, but by using this plugin, we can use a modern python tool called [Poetry](https://python-poetry.org/) to manage dependencies.
 - A directory for code
 - A directory for tests
 
-#### Test directories
+##### Test directories
 
 As (arbitrary) best practice, the example node uses a test directory that follows the following structure
 
@@ -83,6 +83,12 @@ package_name/
 ```
 
 Essentially, tests exist in a parallel directory to the package, and are split into `unit` and `integration` tests. The directories within `unit` and `integration` mirror the structure of the package itself, except that module names are prefixed with `test_`.
+
+#### Message Package Structure
+
+The template will generate a message package for you with an `ExampleAction`, `ExampleService`, and `ExampleMessage`. You can add more messages by adding them to the `msg` directory and updating the `CMakeLists.txt` and `package.xml` files.
+
+This can be used as a place for you to store your messages used just for this project. It follows standard ROS2 message package structure.
 
 ### `.github/`
 
