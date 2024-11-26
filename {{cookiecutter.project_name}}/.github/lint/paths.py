@@ -11,8 +11,8 @@ def required_path(path_str: str) -> Path:
 
 ROS_PATH = required_path("pkgs")
 LINT_PATH = required_path(".github/lint")
-JS_PATH = Path(".")
-FIRMWARE_PATH = Path(".")
+JS_PATH = Path()
+FIRMWARE_PATH = Path()
 LAUNCH_PATH = required_path("launch-profiles")
 
 
