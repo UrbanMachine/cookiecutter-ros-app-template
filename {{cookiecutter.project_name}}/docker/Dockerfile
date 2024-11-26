@@ -82,6 +82,7 @@ RUN rosdep update --rosdistro ${ROS2_DISTRO}
 ########## Add package.xml's of each package
 ########## NOTE TO TEMPLATE USERS: When adding a new package, add a new line here copying the package.xml
 COPY pkgs/{{cookiecutter.example_package_name}}/package.xml pkgs/{{cookiecutter.example_package_name}}/package.xml
+COPY pkgs/{{cookiecutter.__example_messages_package_name}}/package.xml pkgs/{{cookiecutter.__example_messages_package_name}}/package.xml
 ######################################################################
 
 # Install rosdep dependencies for each package
