@@ -26,6 +26,8 @@ services:
       - "./launch-profiles/${LAUNCH_PROFILE:- 'set in docker/_shared'}:/robot/launch-profile/"
       # Necessary for display passthrough
       - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+      # Necessary for PulseAudio passthrough
+      - "/run/user/${USER_ID:-1000}/pulse/native:/pulse-socket"
       # Build cache, used by `save-build-cache` and `restore-build-cache` docker scripts
       - type: volume
         source: ros-nodes-build-cache
@@ -33,6 +35,8 @@ services:
     environment:
       # Necessary for display passthrough
       DISPLAY: $DISPLAY
+      # Necessary for PulseAudio passthrough
+      PULSE_SERVER: "unix:/pulse-socket"
     # Gives the container access to kernel capabilities, useful for most robots
     network_mode: host
     cap_add:
