@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-    <name>{{cookiecutter._example_messages_package_name}}</name>
+    <name>{{cookiecutter.__example_messages_package_name}}</name>
     <version>{{cookiecutter.example_package_version}}</version>
     <description>Defines messages used by the '{{cookiecutter.project_name}} project.</description>
     <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_username_or_org}}
