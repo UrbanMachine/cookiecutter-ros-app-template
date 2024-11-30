@@ -139,3 +139,9 @@ This directory is automatically created the first time you run `docker/launch`. 
 
 For example, if you enter your container via `docker/run` and save a file under `/robot/persistent/`, that file will be available the next time you run `docker/run`. It will also (by default) exist in your local machine under `.docker_volumes/ros-nodes/`.
 The `/robot/persistent` directory is intended for you, the developer, to use. So have at it!
+
+## `.gitattributes`
+
+The `.gitattributes` file is used to configure common binary file formats that are used in 
+robots such that git uses Large File Storage (LFS) to store them. It also specified certain
+line endings so that docker support works on windows.
