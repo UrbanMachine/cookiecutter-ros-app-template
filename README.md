@@ -56,7 +56,7 @@ start from **Step 3**.
    Fill in the form with the appropriate values for your project. The values in the 
    parameters are the default values that will be used if you don't fill in your own.
    ```shell
-   cruft create git@github.com:UrbanMachine/create-ros-app.git
+   cruft create https://github.com/UrbanMachine/create-ros-app.git
    ```
 5. Add the generated files into the project directory and commit them to git.
 6. Check that everything is synced with the template repository
