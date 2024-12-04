@@ -95,20 +95,26 @@ Then commit the `pyproject.lock` file to the repository.
 ### Fixing the `lint` Github Action
 This template automatically runs CI via github actions on every pull request. 
 
-The CI uses cruft to check if there's been upstream changes on the template repository. If not
-fixed, the lint action will fail because because `cruft` is unable to clone the template repo. 
-Set up SSH keys as follows:
+The CI uses cruft to check if there's been upstream changes on the template repository.
+Depending on how you clone the repository, you might get the following error:
 
-1. Generate an SSH Key
-   ```shell
-   ssh-keygen
-   ```
-2. Add the private key (`id_rsa`) to your Github repository's sectrets under the name `SSH_KEY`. Settings can be found under: 
-   https://github.com/GITHUB_ORG/PROJECT_NAME/settings/secrets/actions
+```shell
+╭─ Error ──────────────────────────────────────────────────────────────────────╮
+│ Unable to initialize the cookiecutter using                                  │
+│ git@github.com:UrbanMachine/create-ros-app.git! Failed to clone the repo.    │
+│ stderr: 'Cloning into '/tmp/tmpavykj68r'...                                  │
+│ git@github.com: Permission denied (publickey).                               │
+│ fatal: Could not read from remote repository.                                │
+│                                                                              │
+│ Please make sure you have the correct access rights                          │
+│ and the repository exists.                                                   │
+│ '                                                                            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
 
-3. Add a public key (`id_rsa.pub`) to your repository's deploy keys on github. Settings can be found under: 
-   https://github.com/GITHUB_ORG/PROJECT_NAME/settings/keys
-
+If you do, it's because github actions is trying to use SSH to clone the template repo, 
+and failing. To fix this, edit your `.cruft.json` `template` key so it points to the
+repository using `https://...your-url...git`
 
 ### Optional: Adding Codecov Support
 Codecov let's your project report on test coverage on every pull request. This process requires being an Admin on the github org this project lives in.
