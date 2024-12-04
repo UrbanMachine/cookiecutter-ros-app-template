@@ -76,8 +76,6 @@ services:
   loki:
     image: grafana/loki:3.2.1
     user: "root"
-    ports:
-      - 3100:3100
     volumes:
       - ${VOLUMES_DIRECTORY:- 'set in .env'}/loki:/loki
     <<: *common-config
