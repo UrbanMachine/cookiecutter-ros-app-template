@@ -6,13 +6,11 @@ from subprocess import SubprocessError
 from .errors import CommandError
 from .lint_clang_format import lint_clang_format
 from .lint_darglint import lint_darglint
-from .lint_eslint import lint_eslint
 from .lint_mypy import lint_mypy
 from .lint_ruff import lint_ruff_check, lint_ruff_format
 from .lint_shellcheck import lint_shellcheck
 
 PYTHON_LANGUAGE = "python"
-JAVASCRIPT_LANGUAGE = "javascript"
 CPP_LANGUAGE = "cpp"
 BASH_LANGUAGE = "bash"
 ALL_LANGUAGES = "all"
@@ -25,9 +23,6 @@ LINTERS = {
         lint_ruff_check,
         lint_darglint,
         lint_mypy,
-    ],
-    JAVASCRIPT_LANGUAGE: [
-        lint_eslint,
     ],
     CPP_LANGUAGE: [
         lint_clang_format,

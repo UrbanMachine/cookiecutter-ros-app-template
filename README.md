@@ -23,7 +23,7 @@ The full documentation for the project features can be found in [about_template.
   - Pre-organized packages under `pkgs.`
   - The `launch-profiles/` directory lets you create separate ROS2 "apps" where launchfiles, configuration, model files can live in one place separate from the package code.
 - **Dependencies are Organized and Automatically Installed**: ROS2 dependencies go in a `package.xml`, python dependencies go in the `pyproject.toml`, and the `Dockerfile` has a spot for apt dependencies.
-- **Centralized Linting and Testing**: Enter `poetry shell` at the root of the project, and you can use the `lint` command which covers tooling for `python`, `C++`, and `JS` code.
+- **Centralized Linting and Testing**: A preconfigured linter tool for Python, C++, and bash runnable via `poetry run lint`
 - **GitHub Actions CI/CD**: Pre-configured workflows for continuous integration, including linting, testing, and optional Codecov integration to monitor code coverage.
 - **Cruft Integration for Template Sync**: Ensures projects remain up-to-date with the latest template improvements, allowing the team to adopt new best practices with minimal effort.
 
