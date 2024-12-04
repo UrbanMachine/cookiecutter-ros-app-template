@@ -27,7 +27,7 @@ set -o nounset
 function usage {
   echo "Usage: docker/launch [--no-pull] <launch-profile>" >&2
   echo "Available launch profiles are:" >&2
-  ls -1 launch-profiles/ | sed 's/^/      - /' >&2
+  find launch-profiles/ -maxdepth 1 -type d >&2
   echo "" >&2
   echo "Read more about 'launch-profiles' under 'docs/about_template.md'" >&2
   exit 1
