@@ -3,6 +3,7 @@
   "github_username_or_org": "urbanmachine",
   "dockerhub_username_or_org": "{{ cookiecutter.github_username_or_org }}",
   "project_name": "cool_ros_project",
+  "__project_name_slug": "{{ cookiecutter.project_name | lower | replace(' ', '_') }}",
   "project_description": "This is a cool ROS project, showing off best practices for ROS applications.",
   "version": "0.1.0",
   "license": "MIT",

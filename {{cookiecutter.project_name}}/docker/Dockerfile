@@ -20,7 +20,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES=all
 # Set variables for caches
 ENV APT_CACHE=/var/cache/apt
 ENV PIP_CACHE=/root/.cache/pip
-ENV BUILD_CACHE=/cache/build
+ENV BUILD_CACHE=/colcon-build-cache/{{cookiecutter.__project_name_slug}}/
 
 # TODO: was opengl necessary?
 
@@ -116,7 +116,7 @@ RUN --mount=type=cache,target="${BUILD_CACHE}" restore-build-cache
 # Build all packages, copying project files under a root `/robot/` directory in the container
 COPY ../launch-profiles /robot/launch-profiles
 COPY ../pkgs /robot/pkgs
-RUN enter-workspaces colcon build --symlink-install
+RUN enter-workspaces colcon build
 RUN add-workspace /robot/install/setup.bash
 
 # Move the build cache back into the Docker cache mount so it can be reused on

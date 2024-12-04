@@ -10,10 +10,13 @@ set -o nounset
 # Makes `*` include hidden files
 shopt -s dotglob
 
-if [[ ! -d "/cache/build" ]]; then
+# This directory is mounted by the Dockerfile and is unique to each project.
+BUILD_CACHE=/colcon-build-cache/{{cookiecutter.__project_name_slug}}/
+
+if [[ ! -d "${BUILD_CACHE}" ]]; then
   echo "Build cache directory not mounted" >&2
   exit 1
 fi
 
-rm -rf /cache/build/*
-cp -r /robot/build/. /cache/build/.
+rm -rf ${BUILD_CACHE}*
+cp -r /robot/build/. ${BUILD_CACHE}.

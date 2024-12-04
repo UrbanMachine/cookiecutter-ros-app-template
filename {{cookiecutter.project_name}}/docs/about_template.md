@@ -12,7 +12,7 @@ This documentation walks through the features of the template, and how to use th
 Here's a quick guide on the features of this template
 
 ### Scripts
-- Linting and autoformatting for python (ruff), C++ (clangformat), bash (shellcheck), and javascript (eslint)
+- Linting and autoformatting for python (ruff), C++ (clangformat), bash (shellcheck)
   
   **Relevant Scripts:**
   ```shell

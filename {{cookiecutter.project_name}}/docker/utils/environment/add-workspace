@@ -16,7 +16,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-config_path=/etc/{{cookiecutter.project_name}}
+config_path=/etc/{{cookiecutter.__project_name_slug}}
 mkdir -p "${config_path}"
 workspaces_file="${config_path}/workspaces.txt"
 

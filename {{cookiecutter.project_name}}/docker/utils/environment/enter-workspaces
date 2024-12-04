@@ -14,7 +14,7 @@ set -o pipefail
 # The nounset check is explicitly not enabled because it breaks workspace
 # scripts
 
-workspaces_file="/etc/{{cookiecutter.project_name}}/workspaces.txt"
+workspaces_file="/etc/{{cookiecutter.__project_name_slug}}/workspaces.txt"
 if [[ ! -f "${workspaces_file}" ]]
 then
   echo "File ${workspaces_file} does not exist! Run add-workspace to add workspaces to this file" 1>&2

@@ -3,7 +3,7 @@
 <package format="3">
     <name>{{cookiecutter.__example_messages_package_name}}</name>
     <version>{{cookiecutter.example_package_version}}</version>
-    <description>Defines messages used by the '{{cookiecutter.project_name}} project.</description>
+    <description>Defines messages used by the '{{cookiecutter.__project_name_slug}} project.</description>
     <maintainer email="{{cookiecutter.email}}">{{cookiecutter.github_username_or_org}}
     </maintainer>
     <license>{{cookiecutter.license}}</license>
