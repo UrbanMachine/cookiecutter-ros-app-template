@@ -15,6 +15,7 @@ python = ">=3.10.0,<4.0"
 [tool.poetry.dev-dependencies]
 mypy = "^1.9.0"
 ruff = "^0.3.3"
+cruft = "^2.15.0"
 
 # Remove darglint once ruff adds support for the rules.
 # Tracking: https://github.com/astral-sh/ruff/issues/458
