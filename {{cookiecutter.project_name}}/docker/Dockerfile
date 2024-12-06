@@ -41,6 +41,7 @@ RUN --mount=type=cache,target="${APT_CACHE}" \
     # ROS2
     ros-${ROS2_DISTRO}-ros-base \
     ros-${ROS2_DISTRO}-rosbridge-suite \
+    ros-${ROS2_DISTRO}-rmw-cyclonedds-cpp \
     # Build tools
     build-essential \
     git \
