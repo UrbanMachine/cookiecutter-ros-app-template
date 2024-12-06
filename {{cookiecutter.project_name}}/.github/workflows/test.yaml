@@ -89,7 +89,7 @@ jobs:
     defaults:
       run:
         shell: bash
-    timeout-minutes: 40
+    timeout-minutes: 15
     container:
       image: ${{needs.build-image.outputs.tagged_image}}
       credentials:
