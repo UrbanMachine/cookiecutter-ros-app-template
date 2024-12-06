@@ -41,7 +41,6 @@ RUN --mount=type=cache,target="${APT_CACHE}" \
     # ROS2
     ros-${ROS2_DISTRO}-ros-base \
     ros-${ROS2_DISTRO}-rosbridge-suite \
-    ros-${ROS2_DISTRO}-rmw-cyclonedds-cpp \
     # Build tools
     build-essential \
     git \
@@ -98,7 +97,21 @@ COPY pkgs/{{cookiecutter.example_package_name}}/poetry.lock pkgs/{{cookiecutter.
 COPY pkgs/{{cookiecutter.example_package_name}}/pyproject.toml pkgs/{{cookiecutter.example_package_name}}/pyproject.toml
 ######################################################################
 
-# Install Poetry dependencies for each package
+######################################################################
+########## Add Git ROS2 Packages
+########## NOTE TO TEMPLATE USERS: If you need to depend on a package that is not in the ROS2 distro, you can add it here
+WORKDIR /ros-git-deps/
+RUN --mount=type=cache,target="${PIP_CACHE}" \
+    --mount=type=cache,target="${APT_CACHE}" \
+    install-ros-package-from-git \
+      https://github.com/UrbanMachine/node_helpers.git main pkgs && \
+    ##################### Add your packages here!
+    ########### install-ros-package-from-git {URL} {BRANCH} {PKGS PATH IN REPO}
+    echo "Done installing ROS2 packages from git"
+######################################################################
+
+# Install Poetry dependencies for each package in this repo
+WORKDIR /robot
 RUN --mount=type=cache,target="${PIP_CACHE}" \
     python3 -m colcon_poetry_ros.dependencies.install --base-paths pkgs
 
@@ -116,7 +129,7 @@ RUN --mount=type=cache,target="${BUILD_CACHE}" restore-build-cache
 # Build all packages, copying project files under a root `/robot/` directory in the container
 COPY ../launch-profiles /robot/launch-profiles
 COPY ../pkgs /robot/pkgs
-RUN enter-workspaces colcon build
+RUN enter-workspaces colcon build --packages-select $(ls pkgs)
 RUN add-workspace /robot/install/setup.bash
 
 # Move the build cache back into the Docker cache mount so it can be reused on

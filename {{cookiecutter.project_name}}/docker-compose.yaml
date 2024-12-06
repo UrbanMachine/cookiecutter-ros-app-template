@@ -24,7 +24,7 @@ services:
       # Mounts the 'launch-profiles/LAUNCH_PROFILE' directory into '/robot/launch-profile/'
       # This way you can save configuration files from GUI's like rviz right back to your source dir
       # LAUNCH_PROFILE is set in docker/_shared.sh
-      - "./launch-profiles/${LAUNCH_PROFILE}:/robot/launch-profile/"
+      - ./launch-profiles/${LAUNCH_PROFILE:- ''}:/robot/launch-profile
       # Necessary for display passthrough
       - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
       # Necessary for PulseAudio passthrough

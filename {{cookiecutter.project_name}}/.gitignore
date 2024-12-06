@@ -24,3 +24,6 @@ __pycache__/
 
 # URDF
 *.part
+
+# Dev specific overrides
+*.override.yaml

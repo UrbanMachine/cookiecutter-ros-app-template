@@ -8,6 +8,17 @@ When you build a robot, you have to juggle a **ton** of opinionated decisions be
 
 This template helps streamline the development of ROS2 applications by setting up a standardized project structure, tooling, and configuration for ROS2 packages, ensuring that every project starts with consistent settings and follows best practices. It also includes a centralized linting and testing setup to ensure code quality across packages.
 
+## This feels like a lot. Where do I even start?
+
+Don't worry. All of these features will feel natural if you just stick to the scripts and
+commands in the [about_template.md](%7B%7Bcookiecutter.project_name%7D%7D/docs/about_template.md) Scripts section.
+
+Start by editing code in the example nodes generated under `pkgs`, then play around with
+the example `launcher.py` files under `launch-profiles/` to see how to launch your nodes.
+
+Eventually, you'll be comfortable with all the features of this template, and you'll be able to
+edit and add to them as you see fit.
+
 ## Features
 
 The full documentation for the project features can be found in [about_template.md](%7B%7Bcookiecutter.project_name%7D%7D/docs/about_template.md)

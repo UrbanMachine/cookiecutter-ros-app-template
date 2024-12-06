@@ -39,8 +39,9 @@ Here's a quick guide on the features of this template
 
 - **Add new dependencies:**
   - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after. 
-  - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
   - **System dependencies:** can be added under `docker/Dockerfile`, under the `install-packages` section.
+  - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
+  - **ROS Git dependencies:** If you need to add a ROS package that isn't available in the ROS package index, you can add it as a git dependency in the `docker/Dockerfile` under the `Add Git ROS2 Packages` section.
   
   After any changes, the container will automatically re-build on the next launch.
 - **Save persistent data:** The `/robot/persistent` directory is mounted to `.docker_volumes/ros-nodes/` on your local machine. Save data there to persist across container runs, and to view it in your file manager.
@@ -49,7 +50,30 @@ Here's a quick guide on the features of this template
   - Add a directory under `docker/launch-profiles/`
   - Add a `launching.py` file that launches your ROS nodes inside your new profile directory
   - Fill out the `launching.py` file with the nodes you want to launch.
-  
+  - The directory you created will be mounted under `/robot/launch-profile/` at launch. This is a great place to store configuration files, URDFs, and other specifics for your launch profile.
+
+
+## Container Structure
+
+### `/robot` Director
+
+The `/robot` directory is where your source code lives after building the container.
+You can find your:
+ - `pkgs/` directory
+ - `build/`, `install/` from the colcon build
+
+A directory pointing towards the launch profile chosen in `docker/launch <launch profile>`
+is mounted under `/robot/launch-profile/`. 
+
+For saving persistent data, `/robot/persistent` is mounted to `.docker_volumes/ros-nodes/` on your local machine.
+
+### `/ros-git-deps/` Directory
+
+In the `Dockerfile`, there's a section for adding ROS packages that aren't available in 
+the ROS package index. These are added as git dependencies. The `ros-git-deps/` 
+directory is where these packages are cloned to, and built.
+
+
 ## Project Structure
 
 ### `pkgs/`
