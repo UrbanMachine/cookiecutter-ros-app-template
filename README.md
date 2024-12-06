@@ -41,27 +41,15 @@ The full documentation for the project features can be found in [about_template.
 
 ## Quick Start Guide
 
-### Adding the Template to an Existing Project
+Here's how you create your first ROS2 app:
 
-If you have an existing git repository and you want it to follow this template, 
-use these instructions, start from **Step 1**. If you are starting a new project,
-start from **Step 3**.
-
-1. **Create a `template` branch:**
-   ```shell
-   git checkout --orphan template 
-   ```
-2. Clear files in this branch
-   ```shell
-   git reset --hard 
-   ```
-3. Install Cruft (if not already installed):
+1. Install Cruft (if not already installed):
 
    This tool allows you to create projects from 'cookiecutter' repositories, such as this one. 
    ```shell
    pip install cruft
    ```
-4. Initialize the template. This will create a new directory where the project files will
+2. Initialize the template. This will create a new directory where the project files will
    be dumped.
    
    Fill in the form with the appropriate values for your project. The values in the 
@@ -69,19 +57,12 @@ start from **Step 3**.
    ```shell
    cruft create https://github.com/UrbanMachine/create-ros-app.git
    ```
-5. Add the generated files into the project directory and commit them to git.
-6. Check that everything is synced with the template repository
+3. Check that everything is synced with the template repository
    ```shell
    cruft check
    ```
-7. Merge `template` into your `main` branch:
 
-   You may need to use:
-   ```shell
-   git merge --allow-unrelated-histories template main
-   ```
-8. Delete the `template` branch
-   
+
 ### Updating a Template on an Existing Project 
 To pull in the latest template changes:
 1.Run the following:
