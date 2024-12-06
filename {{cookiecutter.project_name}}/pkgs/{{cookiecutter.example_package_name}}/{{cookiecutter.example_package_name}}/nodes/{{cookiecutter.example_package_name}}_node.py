@@ -16,7 +16,7 @@ class {{cookiecutter.example_node_name}}(HelpfulNode):
     def __init__(self, **kwargs: Any):
         super().__init__("{{cookiecutter.example_node_name}}", **kwargs)
         # Load parameters from the ROS parameter server
-        self.params = self.declare_from_pydantic_model(self.Parameters, "config")
+        self.params = self.declare_from_pydantic_model(self.Parameters, "root_config")
 
         # Create a publisher
         self.publisher = self.create_publisher(

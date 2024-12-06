@@ -38,8 +38,8 @@ Here's a quick guide on the features of this template
 ### Things You Likely Want To Do
 
 - **Add new dependencies:**
-  - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after. 
   - **System dependencies:** can be added under `docker/Dockerfile`, under the `install-packages` section.
+  - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after.
   - **ROS dependencies:** can be added under `pkgs/<package_name>/package.xml`.
   - **ROS Git dependencies:** If you need to add a ROS package that isn't available in the ROS package index, you can add it as a git dependency in the `docker/Dockerfile` under the `Add Git ROS2 Packages` section.
   
@@ -55,17 +55,21 @@ Here's a quick guide on the features of this template
 
 ## Container Structure
 
-### `/robot` Director
+### `/robot` Directory
 
 The `/robot` directory is where your source code lives after building the container.
 You can find your:
  - `pkgs/` directory
  - `build/`, `install/` from the colcon build
 
+### `/robot/launch-profile/` Directory
 A directory pointing towards the launch profile chosen in `docker/launch <launch profile>`
 is mounted under `/robot/launch-profile/`. 
 
+### `/robot/persistent/` Directory
 For saving persistent data, `/robot/persistent` is mounted to `.docker_volumes/ros-nodes/` on your local machine.
+This is a great place to save any serialized data, databases, etc. For static configuration,
+it's recommended to use the `launch-profile` directory.
 
 ### `/ros-git-deps/` Directory
 
