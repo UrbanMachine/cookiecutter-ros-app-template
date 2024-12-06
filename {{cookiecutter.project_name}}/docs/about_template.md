@@ -37,6 +37,9 @@ Here's a quick guide on the features of this template
 
 ### Things You Likely Want To Do
 
+- **Create a new package**: It's recommended to just start by developing with the example package that comes with the
+    template after generation. Once you're familiar with development with the template and want to create a second package,
+    you can follow the steps under [Adding a New Package](#adding-a-new-package).
 - **Add new dependencies:**
   - **System dependencies:** can be added under `docker/Dockerfile`, under the `install-packages` section.
   - **Python dependencies:** can be added under `pkgs/<package_name>/pyproject.toml`. Run `poetry lock` after.
@@ -173,3 +176,20 @@ The `/robot/persistent` directory is intended for you, the developer, to use. So
 The `.gitattributes` file is used to configure common binary file formats that are used in 
 robots such that git uses Large File Storage (LFS) to store them. It also specified certain
 line endings so that docker support works on windows.
+
+# Adding a New Package
+
+It's recommended to start by developing with the example package that comes with the
+template after generation. Once you're familiar with development with the template and want to create a second package,
+you can follow the steps below:
+
+1. Create a new package directory under `pkgs/`
+2. Add a `package.xml` file to the package directory, follow the standard ROS2 package.xml format
+3. Create a pyproject.toml file. Follow the example in the `example_package` directory.
+4. Create a `resource` directory in the package directory, with an empty file in it called `{your package name}`
+5. Create a directory for your code in the package directory, and it's recommended to create a `{your_package_name}_test` directory as well.
+6. Add a few things to the Dockerfile:
+    - Under the `Add package.xml's of each package` section, copy the `package.xml` file into the container
+    - Under the `Add pyproject.toml's of each package` section, copy the `pyproject.toml` file into the container
+
+You should be good to go! Next time you run `docker/launch`, your new package will be built and available in the container.
