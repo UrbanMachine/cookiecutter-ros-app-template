@@ -112,7 +112,7 @@ repository using `https://...your-url...git`
 Codecov let's your project report on test coverage on every pull request. This process requires being an Admin on the github org this project lives in.
 
 1. Sign in to [Codecov](https://about.codecov.io/sign-up/) with your Github account.
-2. Under your repository in Codecov, select "Activate".
+2. Under your repository in Codecov, select "Configure".
 3. Get a codecov API token. Settings can be found under:
    https://app.codecov.io/gh/GITHUB_ORG/PROJECT_NAME/
 4. Add a secret named `CODECOV_TOKEN` to your Github repositories secrets. Settings can be found under: 

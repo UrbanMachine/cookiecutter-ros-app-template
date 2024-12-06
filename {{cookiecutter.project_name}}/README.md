@@ -2,8 +2,8 @@
 {{cookiecutter.project_description}}
 
 ---
-[![Test Status](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/workflows/test.yaml/badge.svg?branch=main)](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/actions?query=workflow%3ATest)
-[![Lint Status](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/workflows/lint.yaml/badge.svg?branch=main)](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/actions?query=workflow%3ALint)
+[![Test Status](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/workflows/test.yaml/badge.svg)](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/actions?query=workflow%3ATest)
+[![Lint Status](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/workflows/lint.yaml/badge.svg)](https://github.com/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/actions?query=workflow%3ALint)
 [![codecov](https://codecov.io/gh/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}}/branch/main/graph/badge.svg)](https://codecov.io/gh/{{cookiecutter.github_username_or_org}}/{{cookiecutter.project_name}})
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
