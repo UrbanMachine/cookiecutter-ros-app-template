@@ -13,25 +13,19 @@
 
 ## Running This Project
 
-For in-depth documentation on the repository features, read the [About Template](docs/about_template.md) documentation.
-
-### Dependencies
-
-This project depends on [Docker](https://docs.docker.com/get-docker/), and can be accelerated using [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html). Install both before proceeding.
-
-The linting tooling requires [Poetry](https://python-poetry.org/docs/) to run.
-
-### Running the Project
-
 To run the project, use the following command:
 
 ```shell
 docker/launch {{cookiecutter.example_launch_profile}}
 ```
-
 Then, open http://localhost/ on your browser to view the project logs.
 
+For in-depth documentation on the repository features, read the [About Template](docs/about_template.md) documentation.
 
+### Dependencies
+
+- [Docker](https://docs.docker.com/get-docker/), and optionally [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) for hardware acceleration.
+- [Poetry](https://python-poetry.org/docs/), in order to use linting tooling.
 
 ---
 This repository was initialized by the [create-ros-app](https://github.com/UrbanMachine/create-ros-app) template. Contributions are welcome!
