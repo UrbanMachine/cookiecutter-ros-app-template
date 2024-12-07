@@ -45,6 +45,7 @@ RUN --mount=type=cache,target="${APT_CACHE}" \
     # Build tools
     build-essential \
     git \
+    git-lfs \
     # Complementary ROS2 Python tools
     python3-colcon-common-extensions \
     python3-colcon-mixin \
