@@ -10,7 +10,7 @@ from node_helpers import launching
 from node_helpers.parameters import ParameterLoader
 
 # Import the forklift URDF module so it register itself with the URDFConstants
-from {{cookiecutter.example_package_name}} import forklift_urdf
+from {{cookiecutter.example_package_name}} import example_urdf
 
 class MetaParameters(BaseModel):
     """This is a great place to put parameters that affect the generation of the launch
@@ -61,7 +61,6 @@ def generate_launch_description() -> LaunchDescription:
             package="rviz2",
             executable="rviz2",
             arguments=["-d", [str(rviz_config)]],
-
         ),
         Node(
             namespace="urdf_arrangement",

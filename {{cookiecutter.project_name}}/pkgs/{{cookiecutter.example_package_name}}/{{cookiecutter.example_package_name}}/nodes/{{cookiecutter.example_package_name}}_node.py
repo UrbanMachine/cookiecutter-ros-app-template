@@ -1,35 +1,60 @@
 from typing import Any
 
+from sensor_msgs.msg import JointState
+
 from node_helpers.nodes import HelpfulNode
 from pydantic import BaseModel
-from std_msgs.msg import String
 from node_helpers.spinning import create_spin_function
 from rclpy.qos import qos_profile_services_default
+
+from {{cookiecutter.example_package_name}}.example_urdf import ForkliftURDF
 
 class {{cookiecutter.example_node_name}}(HelpfulNode):
 
     class Parameters(BaseModel):
         # Define your ROS parameters here
-        publish_value: str
-        publish_hz: float
+        forklift_speed: float  # m/s
+        forklift_max_extent: float
 
     def __init__(self, **kwargs: Any):
         super().__init__("{{cookiecutter.example_node_name}}", **kwargs)
         # Load parameters from the ROS parameter server
         self.params = self.declare_from_pydantic_model(self.Parameters, "root_config")
+        self.urdf = ForkliftURDF.with_namespace(self.get_namespace())
 
-        # Create a publisher
-        self.publisher = self.create_publisher(
-            String, "example_topic", qos_profile=qos_profile_services_default
+        # Track the forks position and direction, so we can move them up and down
+        self.forklift_position = 0.0
+        self.forklift_direction = 1
+
+        # Create publishers
+        self.joint_state_publisher = self.create_publisher(
+            JointState,
+            "desired_joint_states",
+            qos_profile_services_default
         )
 
-        # Create a timer
-        self.create_timer(1 / self.params.publish_hz, self.on_publish)
+        # Create a timer to publish joint values
+        self._publish_hz = 20
+        self.create_timer(1 / self._publish_hz, self.on_publish_joints)
 
 
-    def on_publish(self) -> None:
-        msg = String()
-        msg.data = self.params.publish_value
-        self.publisher.publish(msg)
+    def on_publish_joints(self) -> None:
+        if self.forklift_position >= self.params.forklift_max_extent:
+            self.forklift_direction = -1
+        elif self.forklift_position <= 0:
+            self.forklift_direction = 1
+
+        self.forklift_position += self.forklift_direction * self.params.forklift_speed / self._publish_hz
+
+        joint_positions = {
+            self.urdf.joints.FORKS: self.forklift_position
+        }
+
+        self.joint_state_publisher.publish(
+            JointState(
+                name=list(joint_positions.keys()),
+                position = list(joint_positions.values())
+            )
+        )
 
 main = create_spin_function({{cookiecutter.example_node_name}})

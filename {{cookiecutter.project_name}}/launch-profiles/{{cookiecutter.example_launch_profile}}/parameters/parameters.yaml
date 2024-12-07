@@ -9,8 +9,8 @@ example_node_namespace:
   {{cookiecutter.example_node_name}}:
     ros__parameters:
       root_config:
-        publish_value: "hello"
-        publish_hz: 10.0
+        forklift_speed: 0.25
+        forklift_max_extent: 0.5
 
 urdf_arrangement:
   interactive_transform_publisher:
