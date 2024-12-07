@@ -5,6 +5,7 @@ FROM ${BASE_IMAGE}
 ARG ROS2_DISTRO=jazzy
 ARG POETRY_VERSION=1.8.4
 ARG COLCON_POETRY_ROS_VERSION=0.9.0
+ARG NODE_HELPERS_VERSION=v0.5.0
 
 # Set variables for basic local and config, to make building easier
 ENV LANG=C.UTF-8
@@ -106,7 +107,7 @@ WORKDIR /ros-git-deps/
 RUN --mount=type=cache,target="${PIP_CACHE}" \
     --mount=type=cache,target="${APT_CACHE}" \
     install-ros-package-from-git \
-      https://github.com/UrbanMachine/node_helpers.git main pkgs && \
+      https://github.com/UrbanMachine/node_helpers.git $NODE_HELPERS_VERSION pkgs && \
     ##################### Add your packages here!
     ########### install-ros-package-from-git {URL} {BRANCH} {PKGS PATH IN REPO}
     echo "Done installing ROS2 packages from git"
