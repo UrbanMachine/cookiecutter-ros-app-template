@@ -1,4 +1,5 @@
 """Launch nodes for this launch profile."""
+
 from pathlib import Path
 
 from launch import LaunchDescription
@@ -21,10 +22,9 @@ class MetaParameters(BaseModel):
 
     urdf_modules_to_load: list[launching.URDFModuleNodeFactory.Parameters]
     """This is an example of dynamically loading an arbitrary number of URDFs.
-    
+
     This is set in the `/robot/launch-profile/parameters.yaml` under `meta_parameters`.
     """
-
 
 
 def generate_launch_description() -> LaunchDescription:
