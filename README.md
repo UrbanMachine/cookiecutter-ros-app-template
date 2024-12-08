@@ -122,6 +122,27 @@ If you do, it's because github actions is trying to use SSH to clone the templat
 and failing. To fix this, edit your `.cruft.json` `template` key so it points to the
 repository using `https://...your-url...git`
 
+### Fixing Test+Build Workflow
+
+This template will set up a CI pipeline that automatically builds images of the latest
+commit on each branch, and tags them `YOUR_GITHUB_ORG/PROJECT_NAME:BRANCH_NAME`.
+
+However, it will initially fail until you give your workflow permissions to push to the
+github Docker registry.
+
+You'll see something like:
+
+```shell
+#36 exporting to image
+#36 pushing layers 0.2s done
+#36 ERROR: failed to push ghcr.io/YOUR_GITHUB_ORG/PROJECT_NAME:BRANCH_NAME: unexpected status from POST request to https://ghcr.io/v2/.../.../blobs/uploads/: 403 Forbidden
+```
+
+To fix this, go to the following page and configure Read Write Permissions as shown below.
+https://github.com/YOUR_GITHUB_ORG/PROJECT_NAME/settings/actions
+
+![img.png](imgs/img.png)
+
 ### Optional: Adding Codecov Support
 Codecov let's your project report on test coverage on every pull request. This process requires being an Admin on the github org this project lives in.
 
