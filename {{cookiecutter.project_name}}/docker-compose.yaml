@@ -38,6 +38,8 @@ services:
       DISPLAY: $DISPLAY
       # Necessary for PulseAudio passthrough
       PULSE_SERVER: "unix:/pulse-socket"
+    # Enable serial passthrough
+    privileged: true
     # Gives the container access to kernel capabilities, useful for most robots
     network_mode: host
     cap_add:
