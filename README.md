@@ -2,6 +2,14 @@
 
 A template for creating robust ROS2 (Robot Operating System) applications, designed for large-scale, end-to-end robotics projects. This template is optimized for maintaining consistency and quality across multiple ROS2 packages and project components.
 
+**Featured Projects Using This Template**
+
+- [Pi At Home](https://github.com/apockill/pi_at_home/): A WIP synthetic data generation project for training AI models for robotic trajectory generation
+- [Urban Machine in Isaac SIM](https://github.com/UrbanMachine/isaac-um-factory): A project for simulation urban machine's robots in isaac sim
+- [Node Helpers](https://github.com/UrbanMachine/node_helpers): A library (that this template includes by default) for simplifying many common ROS robotics needs
+- Your project- please create issues to show off your projects, and we'll include them here!
+
+
 ## What? Why?
 
 When you build a robot, you have to juggle a **ton** of opinionated decisions before you so much as tell an actuator to move.
